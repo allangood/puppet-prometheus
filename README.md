@@ -28,6 +28,10 @@
 node_exporter >= 0.15.0
 consul_exporter >= 0.3.0
 
+This module supports below Prometheus architectures:
+- x86_64/amd64
+- i386
+- armv71 (Tested on raspberry pi 3)
 
 ## Background
 
@@ -41,7 +45,7 @@ This module automates the install and configuration of Prometheus monitoring too
 * Installs a configuration file for prometheus daemon (/etc/prometheus/prometheus.yaml) or for alertmanager (/etc/prometheus/alert.rules)
 * Manages the services via upstart, sysv, or systemd
 * Optionally creates alert rules
-* The following exporters are currently implemented: node_exporter, statsd_exporter, process_exporter, haproxy_exporter, mysqld_exporter, blackbox_exporter, consul_exporter, redis_exporter, varnish_exporter, graphite_exporter
+* The following exporters are currently implemented: node_exporter, statsd_exporter, process_exporter, haproxy_exporter, mysqld_exporter, blackbox_exporter, consul_exporter, redis_exporter, varnish_exporter, graphite_exporter, postgres_exporter, collectd_exporter
 
 ## Usage
 
@@ -89,7 +93,7 @@ On the server (for prometheus version >= 2.0.0):
 
 ```puppet
 class { 'prometheus::server':
-    version        => '2.0.0',
+    version        => '2.4.3',
     alerts => { 'groups' => [{ 'name' => 'alert.rules', 'rules' => [{ 'alert' => 'InstanceDown', 'expr' => 'up == 0', 'for' => '5m', 'labels' => { 'severity' => 'page', }, 'annotations' => { 'summary' => 'Instance {{ $labels.instance }} down', 'description' => '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.' }}]}]},
     scrape_configs => [
       { 'job_name' => 'prometheus',

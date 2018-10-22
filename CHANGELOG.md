@@ -4,6 +4,94 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v6.4.0](https://github.com/voxpupuli/puppet-prometheus/tree/v6.4.0) (2018-10-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-prometheus/compare/v6.3.0...v6.4.0)
+
+**Implemented enhancements:**
+
+- Add armv7 support [\#273](https://github.com/voxpupuli/puppet-prometheus/pull/273) ([othalla](https://github.com/othalla))
+- Feature/collectd exporter [\#272](https://github.com/voxpupuli/puppet-prometheus/pull/272) ([mindriot88](https://github.com/mindriot88))
+- consul\_exporter improvement for version 0.4.0 and above [\#264](https://github.com/voxpupuli/puppet-prometheus/pull/264) ([RogierO](https://github.com/RogierO))
+
+## [v6.3.0](https://github.com/voxpupuli/puppet-prometheus/tree/v6.3.0) (2018-10-06)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-prometheus/compare/v6.2.0...v6.3.0)
+
+**Implemented enhancements:**
+
+- Use more compatible STDERR/STDOUT redirection syntax in sysv init script [\#259](https://github.com/voxpupuli/puppet-prometheus/pull/259) ([tkuther](https://github.com/tkuther))
+- allow puppetlabs/stdlib 5.x [\#256](https://github.com/voxpupuli/puppet-prometheus/pull/256) ([bastelfreak](https://github.com/bastelfreak))
+- Add support for mysqld\_exporter version 0.11.0 [\#247](https://github.com/voxpupuli/puppet-prometheus/pull/247) ([TheMeier](https://github.com/TheMeier))
+
+**Fixed bugs:**
+
+- Render alerts file properly depending on prometheus version [\#253](https://github.com/voxpupuli/puppet-prometheus/pull/253) ([bastelfreak](https://github.com/bastelfreak))
+
+**Closed issues:**
+
+- expects a value [\#262](https://github.com/voxpupuli/puppet-prometheus/issues/262)
+- prometheus::haproxy\_exporter Failing [\#261](https://github.com/voxpupuli/puppet-prometheus/issues/261)
+- User needs to adjust $extra\_options for mysqld\_exporter 0.11 and newer [\#255](https://github.com/voxpupuli/puppet-prometheus/issues/255)
+- Error when installing Prometheus server [\#252](https://github.com/voxpupuli/puppet-prometheus/issues/252)
+
+**Merged pull requests:**
+
+- modulesync 2.1.0 and allow puppet 6.x [\#266](https://github.com/voxpupuli/puppet-prometheus/pull/266) ([bastelfreak](https://github.com/bastelfreak))
+- Fix misleading example of hieradata usage in blackbox\_exporter [\#250](https://github.com/voxpupuli/puppet-prometheus/pull/250) ([bramblek1](https://github.com/bramblek1))
+
+## [v6.2.0](https://github.com/voxpupuli/puppet-prometheus/tree/v6.2.0) (2018-08-02)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-prometheus/compare/v6.1.0...v6.2.0)
+
+**Implemented enhancements:**
+
+- add postgres exporter [\#236](https://github.com/voxpupuli/puppet-prometheus/pull/236) ([blupman](https://github.com/blupman))
+- add ubuntu 18.04 support [\#235](https://github.com/voxpupuli/puppet-prometheus/pull/235) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- $rule\_files parameter not respected  [\#180](https://github.com/voxpupuli/puppet-prometheus/issues/180)
+- enhance acceptance tests / dont quote web.external-url param [\#245](https://github.com/voxpupuli/puppet-prometheus/pull/245) ([bastelfreak](https://github.com/bastelfreak))
+- 180 rule files param [\#241](https://github.com/voxpupuli/puppet-prometheus/pull/241) ([bramblek1](https://github.com/bramblek1))
+
+**Merged pull requests:**
+
+- extra spec tests for redis\_exporter [\#237](https://github.com/voxpupuli/puppet-prometheus/pull/237) ([blupman](https://github.com/blupman))
+
+## [v6.1.0](https://github.com/voxpupuli/puppet-prometheus/tree/v6.1.0) (2018-07-29)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-prometheus/compare/v6.0.6...v6.1.0)
+
+**Implemented enhancements:**
+
+- use web.external-url configuration [\#233](https://github.com/voxpupuli/puppet-prometheus/pull/233) ([tuxmea](https://github.com/tuxmea))
+
+**Fixed bugs:**
+
+- Debian init script for prometheus daemon doesn't implement 'reload'  [\#240](https://github.com/voxpupuli/puppet-prometheus/issues/240)
+
+**Closed issues:**
+
+- web.external-url [\#232](https://github.com/voxpupuli/puppet-prometheus/issues/232)
+
+**Merged pull requests:**
+
+- revert eff8dad2 - dont update bundler during travis runs [\#239](https://github.com/voxpupuli/puppet-prometheus/pull/239) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v6.0.6](https://github.com/voxpupuli/puppet-prometheus/tree/v6.0.6) (2018-07-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-prometheus/compare/v6.0.5...v6.0.6)
+
+**Fixed bugs:**
+
+- Redirect SDTERR to SDTOUT for logfile [\#223](https://github.com/voxpupuli/puppet-prometheus/pull/223) ([mkrakowitzer](https://github.com/mkrakowitzer))
+- fix notify $service\_name in the alertmanager [\#222](https://github.com/voxpupuli/puppet-prometheus/pull/222) ([thde](https://github.com/thde))
+
+**Closed issues:**
+
+- haproxy\_exporter New flag handling \> 0.8 [\#227](https://github.com/voxpupuli/puppet-prometheus/issues/227)
+
 ## [v6.0.5](https://github.com/voxpupuli/puppet-prometheus/tree/v6.0.5) (2018-06-23)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-prometheus/compare/v6.0.4...v6.0.5)
@@ -177,7 +265,6 @@ These should not affect the functionality of the module.
 **Fixed bugs:**
 
 - not up to date dependencies: puppetlabs-stdlib should be \>= 4.13.0 [\#123](https://github.com/voxpupuli/puppet-prometheus/issues/123)
-- prometheus.yaml broken syntax when generated from hiera [\#108](https://github.com/voxpupuli/puppet-prometheus/issues/108)
 - prometheus systemd wants and depends "multi-user.target" [\#139](https://github.com/voxpupuli/puppet-prometheus/pull/139) ([bastelfreak](https://github.com/bastelfreak))
 - daemon: explicitly pass provider to service [\#133](https://github.com/voxpupuli/puppet-prometheus/pull/133) ([costela](https://github.com/costela))
 
@@ -390,4 +477,4 @@ These should not affect the functionality of the module.
 
 
 
-\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*

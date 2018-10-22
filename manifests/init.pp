@@ -125,6 +125,11 @@
 #  prometheus 1.8.*, only durations understood by golang's time.ParseDuration are supported. Starting
 #  with prometheus 2, durations can also be given in days, weeks and years.
 #
+#  [*external_url*]
+#  The URL under which Alertmanager is externally reachable (for example, if Alertmanager is served
+#  via a reverse proxy). Used for generating relative and absolute links back to Alertmanager itself.
+#  If omitted, relevant URL components will be derived automatically.
+#
 # Actions:
 #
 # Requires: see Modulefile
@@ -174,11 +179,13 @@ class prometheus (
   Hash $config_hash     = {},
   Hash $config_defaults = {},
   String $os            = downcase($facts['kernel']),
+  Optional[Variant[Stdlib::HTTPUrl, Stdlib::Unixpath, String[1]]] $external_url = undef,
 ) {
 
   case $arch {
     'x86_64', 'amd64': { $real_arch = 'amd64' }
     'i386':            { $real_arch = '386'   }
+    'armv7l':          { $real_arch = 'armv7' }
     default:           {
       fail("Unsupported kernel architecture: ${arch}")
     }

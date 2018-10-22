@@ -7,7 +7,7 @@ describe 'prometheus' do
         facts.merge(os_specific_facts(facts))
       end
 
-      [{ manage_prometheus_server: true, version: '2.0.0-rc.1', bin_dir: '/usr/local/bin', install_method: 'url' }].each do |parameters|
+      [{ manage_prometheus_server: true, version: '2.0.0-rc.1', bin_dir: '/usr/local/bin', install_method: 'url', rule_files: ['/etc/prometheus/rules.d/*.rules'] }].each do |parameters|
         context "with parameters #{parameters}" do
           let(:params) do
             parameters
@@ -116,7 +116,7 @@ describe 'prometheus' do
                 'content' => File.read(fixtures('files', "prometheus#{prom_major}.sysv"))
               )
             }
-          elsif ['centos-7-x86_64', 'debian-8-x86_64', 'debian-9-x86_64', 'redhat-7-x86_64', 'ubuntu-16.04-x86_64', 'archlinux-4-x86_64'].include?(os)
+          elsif ['centos-7-x86_64', 'debian-8-x86_64', 'debian-9-x86_64', 'redhat-7-x86_64', 'ubuntu-16.04-x86_64', 'ubuntu-18.04-x86_64', 'archlinux-4-x86_64'].include?(os)
             # init_style = 'systemd'
 
             it { is_expected.to contain_class('systemd') }
@@ -184,8 +184,7 @@ describe 'prometheus' do
             is_expected.to contain_service('prometheus').with(
               'ensure'     => 'running',
               'name'       => 'prometheus',
-              'enable'     => true,
-              'hasrestart' => true
+              'enable'     => true
             )
           }
 
