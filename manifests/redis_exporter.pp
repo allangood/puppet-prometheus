@@ -123,12 +123,6 @@ class prometheus::redis_exporter (
     default => undef,
   }
 
-  if length($addr) > 0 {
-    warning('DEPRECATION WARNING: The $addr variable will not be supported in the next versions.')
-    warning('For security reasons and better compatibility, please use $conn_string instead.')
-    warning('https://github.com/oliver006/redis_exporter/blob/master/contrib/sample_redis_hosts_file.txt')
-  }
-
   if $install_method == 'url' {
     # Not a big fan of copypasting but prometheus::daemon takes for granted
     # a specific path embedded in the prometheus *_exporter tarball, which
@@ -158,9 +152,8 @@ class prometheus::redis_exporter (
       before => Prometheus::Daemon[$service_name],
     }
     # Is preferable to use "-redis.file" to specify many redis servers in one single configuration file as needed
-    $all_config = $addr + $conn_string
-    $config_file_content = join($all_config,"\n")
-
+    # Keep "$addr" for backward compatibility
+    $config_file_content = join($addr + $conn_string,"\n")
     if $config_file == '' {
       $redis_exporter_config_file = "${install_dir}/redis_exporter.conf"
     } else {
