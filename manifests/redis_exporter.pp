@@ -152,13 +152,14 @@ class prometheus::redis_exporter (
       before => Prometheus::Daemon[$service_name],
     }
     # Is preferable to use "-redis.file" to specify many redis servers in one single configuration file as needed
+    # Also, redis.file supports authentication and alias for multiple redis instances
     # Keep "$addr" for backward compatibility
     $config_file_content = join($addr + $conn_string,"\n")
-    if $config_file == '' {
-      $redis_exporter_config_file = "${install_dir}/redis_exporter.conf"
-    } else {
-      $redis_exporter_config_file = $config_file
+    $redis_exporter_config_file = $config_file ? {
+      ''      => "${install_dir}/redis_exporter.conf",
+      default => $config_file,
     }
+
 
     file { $redis_exporter_config_file:
       ensure  => present,
